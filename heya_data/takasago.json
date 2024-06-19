@@ -1,0 +1,514 @@
+[
+{
+  "name": "Takasago",
+  "id": 400,
+  "active": true,
+  "events": [
+    {
+      "date": "1929/09",
+      "event": "HB",
+      "heyaName": "Wakamatsu",
+      "ichimon": "Takasago",
+      "shisho": "Wakamatsu-K-Izumigawa",
+      "relation": [401, "Takasago"]
+    },
+    {
+      "date": "1954/01",
+      "event": "HI",
+      "heyaName": "Nishiiwa",
+      "shisho": "Nishiiwa-M#3-Shachinosato"
+    },
+    {
+      "date": "1956/05",
+      "event": "CK",
+      "heyaName": "Wakamatsu"
+    },
+    {
+      "date": "1979/08/11",
+      "event": "HT",
+      "shisho": "Yamahibiki-S-Fusanishiki",
+      "reason": "RM"
+    },
+    {
+      "date": "1990/03/16",
+      "event": "HT",
+      "shisho": "Yamahibiki-O-Asashio",
+      "reason": "health"
+    },
+    {
+      "date": "2002/02/05",
+      "event": "CK",
+      "heyaName": "Takasago"
+    },
+    {
+      "date": "2020/11/26",
+      "event": "HT",
+      "shisho": "Nishikijima-S-Asasekiryu",
+      "reason": "before RM"
+    }
+  ]
+},
+{
+  "name": "Takasago",
+  "id": 401,
+  "active": false,
+  "events": [
+    {
+      "date": "1878/05",
+      "event": "HF",
+      "heyaName": "Takasago",
+      "ichimon": "Takasago",
+      "shisho": "Takasago-M#1-Takasago"
+    },
+    {
+      "date": "1900/04",
+      "event": "HT",
+      "shisho": "Onomatsu-S-Takamiyama",
+      "reason": "decease"
+    },
+    {
+      "date": "1915/01",
+      "event": "HT",
+      "shisho": "Active-O-Asashio",
+      "reason": "decease"
+    },
+    {
+      "date": "1942/01",
+      "event": "HT",
+      "shisho": "Active-/O/Y-Maedayama"
+    },
+    {
+      "date": "1971/08/23",
+      "event": "HT",
+      "shisho": "Furiwake-Y-Asashio",
+      "reason": "decease"
+    },
+    {
+      "date": "1988/10/24",
+      "event": "HT",
+      "shisho": "Onoe-K-Fujinishiki",
+      "reason": "decease"
+    },
+    {
+      "date": "2002/02/05",
+      "event": "HS",
+      "relation": [400, "Wakamatsu"],
+      "reason": "before RM"
+    }
+  ]
+},
+{
+  "name": "Hakkaku",
+  "id": 402,
+  "active": true,
+  "events": [
+    {
+      "date": "1993/10",
+      "event": "HB",
+      "heyaName": "Hakkaku",
+      "ichimon": "Takasago",
+      "shisho": "Hakkaku-Y-Hokutoumi",
+      "relation": [403, "Kokonoe"]
+    }
+  ]
+},
+{
+  "name": "Kokonoe",
+  "id": 403,
+  "active": true,
+  "events": [
+    {
+      "date": "1974/07",
+      "event": "HB",
+      "heyaName": "Izutsu",
+      "ichimon": "Takasago",
+      "shisho": "Retired-Y-Kitanofuji",
+      "relation": [404, "Kokonoe"]
+    },
+    {
+      "date": "1977/11",
+      "event": "CK",
+      "heyaName": "Kokonoe"
+    },
+    {
+      "date": "1992/04/01",
+      "event": "HT",
+      "shisho": "Jinmaku-Y-Chiyonofuji"
+    },
+    {
+      "date": "2016/08/03",
+      "event": "HT",
+      "shisho": "Sanoyama-O-Chiyotaikai",
+      "reason": "decease"
+    }
+  ]
+},
+{
+  "name": "Kokonoe",
+  "id": 404,
+  "active": false,
+  "events": [
+    {
+      "date": "1967/01/31",
+      "event": "HB",
+      "heyaName": "Kokonoe",
+      "ichimon": "Takasago",
+      "shisho": "Kokonoe-Y-Chiyonoyama",
+      "relation": [0, "Dewanoumi"]
+    },
+    {
+      "date": "1977/11",
+      "event": "HS",
+      "relation": [403, "Izutsu"],
+      "reason": "decease"
+    }
+  ]
+},
+{
+  "name": "Nishikido",
+  "id": 405,
+  "active": true,
+  "events": [
+    {
+      "date": "2002/12/01",
+      "event": "HB",
+      "heyaName": "Nishikido",
+      "ichimon": "Takasago",
+      "shisho": "Nishikido-S-Mitoizumi",
+      "relation": [400, "Takasago"]
+    }
+  ]
+},
+{
+  "name": "Nakamura",
+  "id": 406,
+  "active": false,
+  "events": [
+    {
+      "date": "1986/05/30",
+      "event": "HB",
+      "heyaName": "Nakamura",
+      "ichimon": "Takasago",
+      "shisho": "Nakamura-S-Fujizakura",
+      "relation": [401, "Takasago"]
+    },
+    {
+      "date": "2012/12/19",
+      "event": "HS",
+      "relation": [407, "Azumazeki"],
+      "reason": "before RM"
+    }
+  ]
+},
+{
+  "name": "Azumazeki",
+  "id": 407,
+  "active": false,
+  "events": [
+    {
+      "date": "1986/02/02",
+      "event": "HB",
+      "heyaName": "Azumazeki",
+      "ichimon": "Takasago",
+      "shisho": "Azumezeki-S-Takamiyama",
+      "relation": [401, "Takasago"]
+    },
+    {
+      "date": "2009/06/16",
+      "event": "HT",
+      "shisho": "Onogawa-M#10-Ushiomaru",
+      "reason": "RM"
+    },
+    {
+      "date": "2020/01/30",
+      "event": "HT",
+      "shisho": "Furiwake-K-Takamisakari",
+      "reason": "decease"
+    },
+    {
+      "date": "2021/04/01",
+      "event": "HS",
+      "relation": [402, "Hakkaku"]
+    }
+  ]
+},
+{
+  "name": "Furiwake",
+  "id": 408,
+  "active": false,
+  "events": [
+    {
+      "date": "1962/09",
+      "event": "HB",
+      "heyaName": "Furiwake",
+      "ichimon": "Takasago",
+      "shisho": "Furiwake-Y-Asashio",
+      "relation": [401, "Takasago"]
+    },
+    {
+      "date": "1964/01",
+      "event": "HS"
+    }
+  ]
+},
+{
+  "name": "Sanoyama",
+  "id": 409,
+  "active": false,
+  "events": [
+    {
+      "date": "1961/07",
+      "event": "HB",
+      "heyaName": "Sanoyama",
+      "ichimon": "Takasago",
+      "shisho": "Sanoyama-K-Kuninobori",
+      "relation": [401, "Takasago"]
+    },
+    {
+      "date": "1964/03",
+      "event": "HS"
+    }
+  ]
+},
+{
+  "name": "Sanoyama",
+  "id": 410,
+  "active": false,
+  "events": [
+    {
+      "date": "1955/03",
+      "event": "HB",
+      "heyaName": "Sanoyama",
+      "ichimon": "Takasago",
+      "shisho": "Sanoyama-M#2-Asahibiki",
+      "relation": [401, "Takasago"]
+    },
+    {
+      "date": "1960/02/22",
+      "event": "HS",
+      "relation": [401, "Takasago"],
+      "reason": "decease"
+    }
+  ]
+},
+{
+  "name": "Oyama",
+  "id": 411,
+  "active": false,
+  "events": [
+    {
+      "date": "1940/01",
+      "event": "HB",
+      "heyaName": "Oyama",
+      "ichimon": "Takasago",
+      "shisho": "Oyama-S-Takanobori",
+      "relation": [401, "Takasago"]
+    },
+    {
+      "date": "1962/01/20",
+      "event": "HT",
+      "shisho": "Furiwake-O-Matsunobori",
+      "reason": "decease"
+    },
+    {
+      "date": "1986/04/25",
+      "event": "HT",
+      "shisho": "Yamahibiki-M#2-Daihi",
+      "reason": "decease"
+    },
+    {
+      "date": "1986/05/30",
+      "event": "HS",
+      "relation": [401, "Takasago"]
+    }
+  ]
+},
+{
+  "name": "Kokonoe",
+  "id": 412,
+  "active": false,
+  "events": [
+    {
+      "date": "1931/05",
+      "event": "HB",
+      "heyaName": "Kokonoe",
+      "ichimon": "None",
+      "shisho": "Kokonoe-O-Toyokuni",
+      "relation": [413, "Izutsu"]
+    },
+    {
+      "date": "1937/05",
+      "event": "HS",
+      "relation": [208, "Asahiyama"],
+      "reason": "health"
+    }
+  ]
+},
+{
+  "name": "Izutsu",
+  "id": 413,
+  "active": false,
+  "events": [
+    {
+      "date": "1896/01",
+      "event": "HB",
+      "heyaName": "Izutsu",
+      "ichimon": "Takasago",
+      "shisho": "Retired-Y-Nishinoumi",
+      "relation": [401, "Takasago"]
+    },
+    {
+      "date": "1909/03",
+      "event": "HT",
+      "shisho": "Active-/S/Y-Nishonoumi",
+      "reason": "decease"
+    },
+    {
+      "date": "1931/03",
+      "event": "HT",
+      "shisho": "Retired-M#2-Hoshikabuto",
+      "reason": "decease"
+    },
+    {
+      "date": "1941/05/14",
+      "event": "CI",
+      "ichimon": "Tokitsukaze"
+    },
+    {
+      "date": "1944/09/23",
+      "event": "HS",
+      "relation": [300, "Futabayama"],
+      "reason": "decease"
+    }
+  ]
+},
+{
+  "name": "Sadogatake",
+  "id": 414,
+  "active": false,
+  "events": [
+    {
+      "date": "1929/05",
+      "event": "HB",
+      "heyaName": "Sadogatake",
+      "ichimon": "None",
+      "shisho": "Sadogatake-M#1-Akutsugawa",
+      "relation": [401, "Takasago"]
+    },
+    {
+      "date": "1946/11",
+      "event": "HS"
+    }
+  ]
+},
+{
+  "name": "Asakayama",
+  "id": 415,
+  "active": false,
+  "events": [
+    {
+      "date": "1929/05",
+      "event": "HB",
+      "heyaName": "Asakayama",
+      "ichimon": "None",
+      "shisho": "Asakayama-Y-Nishinoumi",
+      "relation": [413, "Izutsu"]
+    },
+    {
+      "date": "1933/07/28",
+      "event": "HS",
+      "relation": [413, "Izutsu"],
+      "reason": "decease"
+    }
+  ]
+},
+{
+  "name": "Onoe",
+  "id": 416,
+  "active": false,
+  "events": [
+    {
+      "date": "1911/02",
+      "event": "HE",
+      "heyaName": "Onoe",
+      "ichimon": "None",
+      "shisho": "Onoe-J#4-Yashuzan"
+    },
+    {
+      "date": "1919/05",
+      "event": "HT",
+      "shisho": "Active-J#6-Yashuzan",
+      "reason": "decease"
+    },
+    {
+      "date": "1931/03",
+      "event": "HSt"
+    },
+    {
+      "date": "1950/01",
+      "event": "HB/CI",
+      "ichimon": "Takasago",
+      "shisho": "Onoe-J#6-Yashuzan",
+      "relation": [401, "Takasago"]
+    },
+    {
+      "date": "1951/09",
+      "event": "HSt"
+    },
+    {
+      "date": "1952/01",
+      "event": "HB",
+      "shisho": "Onoe-J#6-Yashuzan",
+      "relation": [401, "Takasago"]
+    },
+    {
+      "date": "1955/07/28",
+      "event": "HS",
+      "relation": [401, "Takasago"],
+      "reason": "decease"
+    }
+  ]
+},
+{
+  "name": "Sanoyama",
+  "id": 417,
+  "active": false,
+  "events": [
+    {
+      "date": "1908/01",
+      "event": "HB",
+      "heyaName": "Sanoyama",
+      "ichimon": "None",
+      "shisho": "Active-O/M#6/-Asashio",
+      "relation": [401, "Takasago"]
+    },
+    {
+      "date": "1920/08/26",
+      "event": "HS",
+      "relation": [401, "Takasago"],
+      "reason": "decease"
+    }
+  ]
+},
+{
+  "name": "Inagawa",
+  "id": 418,
+  "active": false,
+  "events": [
+    {
+      "date": "1899/01",
+      "event": "HB",
+      "heyaName": "Inagawa",
+      "ichimon": "None",
+      "shisho": "Active-/M#12/S-Inagawa",
+      "relation": [401, "Takasago"]
+    },
+    {
+      "date": "1916/02/17",
+      "event": "HS",
+      "relation": [401, "Takasago"],
+      "reason": "decease"
+    }
+  ]
+},
+]

@@ -1,0 +1,52 @@
+Dewanoumi (1862-)
+	Kasugano* (1890/05-)
+		Tamanoi (1990/01/25-)
+		Irumagawa -> Ikazuchi (1993/01/29-)
+		Chiganoura -> Tokiwayama (2004/09/27-)
+	Irumagawa (1912/01-1923/01)
+		Chiganoura (1923/01-1928/01)
+	Takekuma* (1929/01-1954/05)
+	Matsuchiyama (1930/05-1934/05)
+	Mihogaseki (1950/05-2013/10/03)
+		Kitanoumi -> Yamahibiki (1985/12/01-2015/11/30)
+		Hatachiyama (1994/06/01-2006/06/23)
+		Kise (2003/12/01-)
+		Onoe (2006/08/01-)
+	Jinmaku (1952/01-1954/05)
+	Kokonoe* (1967/01/31-1977/11)
+		Izutsu -> Kokonoe (1974/07-)
+	Musashigawa -> Fujishima (1981/08/29-)
+		Musashigawa (2013/04/01-)
+		Futagoyama (2018/04/01-)
+	Nakadachi -> Sakaigawa (1998/05/25-)
+		Takekuma (2022/02/01-)
+	Tagonoura (2000/02/01-2012/02/13)
+
+Nishonoseki 1909
+Tatsunami 1915
+Isegahama 1921
+Tokitsukaze 1941
+Kokonoe 1967
+Takadagawa 1974
+Minato 1982
+Shikihide 1992
+Oitekaze 1998
+Shikoroyama 2004
+Tokiwayama 2004
+Asahiyama 2016
+Wakafuji* 1880
+Izutsu* 1896
+Fujigane* 1930
+Magaki* 1983
+
+Dewanoumi:
+	7 branchouts + 4 sub-branchouts
+
+Takashima-Tomozuna
+	6 branchouts + 3 sub-branchouts
+
+Isegahama
+	6 branchouts
+
+Nishonoseki
+	7 branchouts + 17 sub-branchouts

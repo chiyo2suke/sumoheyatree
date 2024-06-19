@@ -1,0 +1,775 @@
+[
+{
+  "name": "Nishonoseki",
+  "id": 100,
+  "active": true,
+  "events": [
+    {
+      "date": "2021/08/01",
+      "event": "HB",
+      "heyaName": "Araiso",
+      "ichimon": "Nishonoseki",
+      "shisho": "Araiso-Y-Kisenosato",
+      "relation": [101, "Tagonoura"]
+    },
+    {
+      "date": "2021/12/24",
+      "type": "CK",
+      "heyaName": "Nishonoseki"
+    }
+  ]
+},
+{
+  "name": "Tagonoura",
+  "id": 101,
+  "active": true,
+  "events": [
+    {
+      "date": "1989/02/01",
+      "event": "HB",
+      "heyaName": "Naruto",
+      "ichimon": "Nishonoseki",
+      "shisho": "Naruto-Y-Takanosato",
+      "relation": [102, "Futagoyama"]
+    },
+    {
+      "date": "2011/11/08",
+      "event": "HT",
+      "shisho": "Nishiiwa-M#8-Takanotsuru",
+      "reason": "decease"
+    },
+    {
+      "date": "2013/12/25",
+      "event": "CK",
+      "heyaName": "Tagonoura"
+    }
+  ]
+},
+{
+  "name": "Futagoyama",
+  "id": 102,
+  "active": false,
+  "events": [
+    {
+      "date": "1962/07",
+      "event": "HB",
+      "heyaName": "Futagoyama",
+      "ichimon": "Nishonoseki",
+      "shisho": "Futagoyama-Y-Wakanohana",
+      "relation": [103, "Hanakago"]
+    },
+    {
+      "date": "1993/02/01",
+      "event": "HS",
+      "relation": [104, "Fujishima"],
+      "reason": "before RM"
+    }
+  ]
+},
+{
+  "name": "Hanakago",
+  "id": 103,
+  "active": false,
+  "events": [
+    {
+      "date": "1952/09",
+      "event": "HB",
+      "heyaName": "Shibatayama",
+      "ichimon": "Nishonoseki",
+      "shisho": "Shibatayama-M#3-Onoumi",
+      "relation": [105, "Nishonoseki"]
+    },
+    {
+      "date": "1953/05",
+      "event": "CK",
+      "heyaName": "Hanakago"
+    },
+    {
+      "date": "1981/03/10",
+      "event": "HT",
+      "shisho": "Retired-Y-Wajima"
+    },
+    {
+      "date": "1985/12/21",
+      "event": "HS",
+      "relation": [106, "Hanaregoma"]
+    }
+  ]
+},
+{
+  "name": "Takanohana",
+  "id": 104,
+  "active": false,
+  "events": [
+    {
+      "date": "1982/02",
+      "event": "HB",
+      "heyaName": "Fujishima",
+      "ichimon": "Nishonoseki",
+      "shisho": "Fujishima-O-Takanohana",
+      "relation": [102, "Futagoyama"]
+    },
+    {
+      "date": "1993/02/01",
+      "event": "CK",
+      "heyaName": "Futagoyama"
+    },
+    {
+      "date": "2004/02/01",
+      "event": "HI",
+      "heyaName": "Takanohana",
+      "shisho": "Takanohana-Y-Takanohana",
+      "reason": "health"
+    },
+    {
+      "date": "2010/01/08",
+      "event": "CI",
+      "ichimon": "None"
+    },
+    {
+      "date": "2014/05",
+      "event": "CI",
+      "ichimon": "Takanohana"
+    },
+    {
+      "date": "2018/10/02",
+      "event": "HS",
+      "relation": [107, "Chiganoura"]
+    }
+  ]
+},
+{
+  "name": "Nishonoseki",
+  "id": 105,
+  "active": false,
+  "events": [
+    {
+      "date": "1909/01",
+      "event": "HB",
+      "heyaName": "Nishonoseki",
+      "ichimon": "Tomozuna",
+      "shisho": "Retired-S-Kaizan",
+      "relation": [501, "Tomozuna"]
+    },
+    {
+      "date": "1931/06/06",
+      "event": "HSt",
+      "relation": [505, "Kumegawa"],
+      "reason": "decease"
+    },
+    {
+      "date": "1935/01",
+      "event": "HB/CI",
+      "ichimon": "Nishonoseki",
+      "shisho": "Active-Y-Tamanishiki",
+      "relation": [505, "Kumegawa"]
+    },
+    {
+      "date": "1939/01",
+      "event": "HT",
+      "shisho": "Active-S/K/-Tamanoumi",
+      "reason": "decease"
+    },
+    {
+      "date": "1951/09",
+      "event": "HT",
+      "shisho": "Active-O/M#2/-Saganohana"
+    },
+    {
+      "date": "1975/04/27",
+      "event": "HT",
+      "shisho": "Minatogawa-M#1-Tokachiiwa",
+      "reason": "decease"
+    },
+    {
+      "date": "1976/09/03",
+      "event": "HT",
+      "shisho": "Retired-S-Kongo"
+    },
+    {
+      "date": "2013/01/27",
+      "event": "HS",
+      "reason": "health"
+    }
+  ]
+},
+{
+  "name": "Hanaregoma",
+  "id": 106,
+  "active": false,
+  "events": [
+    {
+      "date": "1981/02/01",
+      "event": "HB",
+      "heyaName": "Hanaregoma",
+      "ichimon": "Nishonoseki",
+      "shisho": "Hanaregoma-O-Kaiketsu",
+      "relation": [103, "Hanakago"]
+    },
+    {
+      "date": "2013/02/07",
+      "event": "HS",
+      "relation": [108, "Shibatayama"],
+      "reason": "before RM"
+    }
+  ]
+},
+{
+  "name": "Tokiwayama",
+  "id": 107,
+  "active": true,
+  "events": [
+    {
+      "date": "2004/09/27",
+      "event": "HB",
+      "heyaName": "Chiganoura",
+      "ichimon": "Dewanoumi",
+      "shisho": "Chiganoura-S-Masudayama",
+      "relation": [2, "Kasugano"]
+    },
+    {
+      "date": "2016/04/08",
+      "event": "HT",
+      "shisho": "Tokiwayama-K-Takamisugi",
+      "reason": "before RM"
+    },
+    {
+      "date": "2016/05/08",
+      "event": "CI",
+      "ichimon": "Takanohana"
+    },
+    {
+      "date": "2018/09/21",
+      "event": "CI",
+      "ichimon": "Nishonoseki"
+    },
+    {
+      "date": "2020/11/26",
+      "event": "CK",
+      "heyaName": "Tokiwayama"
+    }
+  ]
+},
+{
+  "name": "Shibatayama",
+  "id": 108,
+  "active": true,
+  "events": [
+    {
+      "date": "1999/06/01",
+      "event": "HB",
+      "heyaName": "Shibatayama",
+      "ichimon": "Nishonoseki",
+      "shisho": "Shibatayama-Y-Onokuni",
+      "relation": [106, "Hanaregoma"]
+    }
+  ]
+},
+{
+  "name": "Kataonami",
+  "id": 109,
+  "active": true,
+  "events": [
+    {
+      "date": "1961/05",
+      "event": "HB",
+      "heyaName": "Kataonami",
+      "ichimon": "Nishonoseki",
+      "shisho": "Kataonami-S-Tamanoumi",
+      "relation": [105, "Nishonoseki"]
+    },
+    {
+      "date": "1987/10/03",
+      "event": "HT",
+      "shisho": "Minatogawa-S-Tamanofuji",
+      "reason": "decease"
+    },
+    {
+      "date": "2010/02/04",
+      "event": "HT",
+      "shisho": "Tateyama-S-Tamakasuga"
+    }
+  ]
+},
+{
+  "name": "Hanaregoma",
+  "id": 110,
+  "active": true,
+  "events": [
+    {
+      "date": "1990/02/18",
+      "event": "HB",
+      "heyaName": "Matsugane",
+      "ichimon": "Nishonoseki",
+      "shisho": "Matsugane-O-Wakashimazu",
+      "relation": [102, "Futagoyama"]
+    },
+    {
+      "date": "2014/12/01",
+      "event": "CK",
+      "heyaName": "Nishonoseki"
+    },
+    {
+      "date": "2021/12/24",
+      "event": "HI",
+      "heyaName": "Hanaregoma",
+      "shisho": "Hanaregoma-S-Tamanoshima",
+      "reason": "before RM"
+    }
+  ]
+},
+{
+  "name": "Minato",
+  "id": 111,
+  "active": true,
+  "events": [
+    {
+      "date": "1982/12",
+      "event": "HB",
+      "heyaName": "Minato",
+      "ichimon": "Tokitsukaze",
+      "shisho": "Minato-K-Yutakayama",
+      "relation": [300, "Tokitsukaze"]
+    },
+    {
+      "date": "2010/07/27",
+      "event": "HT",
+      "shisho": "Tatsutagawa-M#2-Minatofuji"
+    },
+    {
+      "date": "2017/12/18",
+      "event": "CI",
+      "ichimon": "None"
+    },
+    {
+      "date": "2018/09/21",
+      "event": "CI",
+      "ichimon": "Nishonoseki"
+    }
+  ]
+},
+{
+  "name": "Sadogatake",
+  "id": 112,
+  "active": true,
+  "events": [
+    {
+      "date": "1955/05",
+      "event": "HB",
+      "heyaName": "Sadogatake",
+      "ichimon": "Nishonoseki",
+      "shisho": "Retired-K-Kotonishiki",
+      "relation": [105, "Nishonoseki"]
+    },
+    {
+      "date": "1974/07/26",
+      "event": "HT",
+      "shisho": "Shiratama-Y-Kotozakura",
+      "reason": "decease"
+    },
+    {
+      "date": "2005/11/26",
+      "event": "HT",
+      "shisho": "Retired-S-Kotonowaka",
+      "reason": "RM"
+    }
+  ]
+},
+{
+  "name": "Naruto",
+  "id": 113,
+  "active": true,
+  "events": [
+    {
+      "date": "2017/04/01",
+      "event": "HB",
+      "heyaName": "Naruto",
+      "ichimon": "Nishonoseki",
+      "shisho": "Naruto-O-Kotooshu",
+      "relation": [112, "Sadogatake"]
+    }
+  ]
+},
+{
+  "name": "Nishiiwa",
+  "id": 114,
+  "active": true,
+  "events": [
+    {
+      "date": "2018/02/01",
+      "event": "HB",
+      "heyaName": "Nishiiwa",
+      "ichimon": "Nishonoseki",
+      "shisho": "Nishiiwa-S-Wakanosato",
+      "relation": [101, "Tagonoura"]
+    }
+  ]
+},
+{
+  "name": "Otake",
+  "id": 115,
+  "active": true,
+  "events": [
+    {
+      "date": "1971/12/22",
+      "event": "HB",
+      "heyaName": "Taiho",
+      "ichimon": "Nishonoseki",
+      "shisho": "Taiho-Y-Taiho",
+      "relation": [105, "Nishonoseki"]
+    },
+    {
+      "date": "2004/01/01",
+      "event": "HI",
+      "heyaName": "Otake",
+      "shisho": "Otake-S-Takatoriki",
+      "reason": "before RM"
+    },
+    {
+      "date": "2010/01/19",
+      "event": "CI",
+      "ichimon": "None"
+    },
+    {
+      "date": "2010/07/04",
+      "event": "HT",
+      "shisho": "Futagoyama-J#4-Dairyu",
+      "reason": "dismissal"
+    },
+    {
+      "date": "2012/07/01",
+      "event": "CI",
+      "ichimon": "Takanohana"
+    },
+    {
+      "date": "2018/09/21",
+      "event": "CI",
+      "ichimon": "Nishonoseki"
+    }
+  ]
+},
+{
+  "name": "Onomatsu",
+  "id": 116,
+  "active": true,
+  "events": [
+    {
+      "date": "1994/10/01",
+      "event": "HB",
+      "heyaName": "Onomatsu",
+      "ichimon": "Nishonoseki",
+      "shisho": "Onomatsu-S-Masurao",
+      "relation": [115, "Taiho"]
+    },
+    {
+      "date": "2010/01/19",
+      "event": "CI",
+      "ichimon": "None"
+    },
+    {
+      "date": "2012/07/01",
+      "event": "CI",
+      "ichimon": "Takanohana"
+    },
+    {
+      "date": "2018/09/21",
+      "event": "CI",
+      "ichimon": "Nishonoseki"
+    },
+    {
+      "date": "2019/09/26",
+      "event": "HT",
+      "shisho": "Otowayama-M#8-Daido",
+      "reason": "health"
+    }
+  ]
+},
+{
+  "name": "Oshiogawa",
+  "id": 117,
+  "active": true,
+  "events": [
+    {
+      "date": "2022/02/07",
+      "event": "HB",
+      "heyaName": "Oshiogawa",
+      "ichimon": "Nishonoseki",
+      "shisho": "Oshiogawa-S-Takekaze",
+      "relation": [118, "Oguruma"]
+    }
+  ]
+},
+{
+  "name": "Oguruma",
+  "id": 118,
+  "active": false,
+  "events": [
+    {
+      "date": "1987/03/23",
+      "event": "HB",
+      "heyaName": "Oguruma",
+      "ichimon": "Nishonoseki",
+      "shisho": "Oguruma-O-Kotokaze",
+      "relation": [112, "Sadogatake"]
+    },
+    {
+      "date": "2022/02/07",
+      "event": "HS",
+      "relation": [100, "Nishonoseki"],
+      "reason": "before RM"
+    }
+  ]
+},
+{
+  "name": "Shikoroyama",
+  "id": 119,
+  "active": true,
+  "events": [
+    {
+      "date": "2004/01/27",
+      "event": "HB",
+      "heyaName": "Shikoroyama",
+      "ichimon": "Tokitsukaze",
+      "shisho": "Shikoroyama-S-Terao",
+      "relation": [301, "Izutsu"]
+    },
+    {
+      "date": "2017/12/18",
+      "event": "CI",
+      "ichimon": "None"
+    },
+    {
+      "date": "2018/09/21",
+      "event": "CI",
+      "ichimon": "Nishonoseki"
+    }
+  ]
+},
+{
+  "name": "Takadagawa",
+  "id": 120,
+  "active": true,
+  "events": [
+    {
+      "date": "1974/04/30",
+      "event": "HB",
+      "heyaName": "Takadagawa",
+      "ichimon": "Takasago",
+      "shisho": "Takadagawa-O-Maenoyama",
+      "relation": [401, "Takasago"]
+    },
+    {
+      "date": "1998/01/31",
+      "event": "CI",
+      "ichimon": "None"
+    },
+    {
+      "date": "2009/08/05",
+      "event": "HT",
+      "shisho": "Sendagawa-S-Akinoshima",
+      "reason": "before RM"
+    },
+    {
+      "date": "2011/01/17",
+      "event": "CI",
+      "ichimon": "Nishonoseki"
+    }
+  ]
+},
+{
+  "name": "Araiso",
+  "id": 121,
+  "active": false,
+  "events": [
+    {
+      "date": "1993/05/27",
+      "event": "HB",
+      "heyaName": "Araiso",
+      "ichimon": "Nishonoseki",
+      "shisho": "Araiso-K-Futagodake",
+      "relation": [104, "Futagoyama"]
+    },
+    {
+      "date": "2008/09/29",
+      "event": "HS",
+      "relation": [122, "Hanakago"],
+      "reason": "before RM"
+    }
+  ]
+},
+{
+  "name": "Hanakago",
+  "id": 122,
+  "active": false,
+  "events": [
+    {
+      "date": "1992/10/01",
+      "event": "HB",
+      "heyaName": "Hanakago",
+      "ichimon": "Nishonoseki",
+      "shisho": "Hanakago-S-Daijuyama",
+      "relation": [102, "Futagoyama"]
+    },
+    {
+      "date": "2012/05/24",
+      "event": "HS",
+      "relation": [123, "Minezaki"]
+    }
+  ]
+},
+{
+  "name": "Minezaki",
+  "id": 123,
+  "active": false,
+  "events": [
+    {
+      "date": "1988/12/01",
+      "event": "HB",
+      "heyaName": "Minezaki",
+      "ichimon": "Nishonoseki",
+      "shisho": "Minezaki-M#2-Misugiiso",
+      "relation": [106, "Hanaregoma"]
+    },
+    {
+      "date": "2021/04/01",
+      "event": "HS",
+      "relation": [108, "Shibatayama"],
+      "reason": "before RM"
+    }
+  ]
+},
+{
+  "name": "Magaki",
+  "id": 124,
+  "active": false,
+  "events": [
+    {
+      "date": "1983/12/27",
+      "event": "HB",
+      "heyaName": "Magaki",
+      "ichimon": "Nishonoseki",
+      "shisho": "Magaki-Y-Wakanohana",
+      "relation": [102, "Futagoyama"]
+    },
+    {
+      "date": "2010/01/19",
+      "event": "CI",
+      "ichimon": "None"
+    },
+    {
+      "date": "2012/07/01",
+      "event": "CI",
+      "ichimon": "Takanohana"
+    },
+    {
+      "date": "2013/03/25",
+      "event": "HS",
+      "relation": [200, "Isegahama"],
+      "reason": "health"
+    }
+  ]
+},
+{
+  "name": "Oshiogawa",
+  "id": 125,
+  "active": false,
+  "events": [
+    {
+      "date": "1975/10/29",
+      "event": "HB",
+      "heyaName": "Oshiogawa",
+      "ichimon": "Nishonoseki",
+      "shisho": "Oshiogawa-O-Daikirin",
+      "relation": [105, "Nishonoseki"]
+    },
+    {
+      "date": "2005/04/01",
+      "event": "HS",
+      "relation": [118, "Oguruma"]
+    }
+  ]
+},
+{
+  "name": "Minatogawa",
+  "id": 126,
+  "active": false,
+  "events": [
+    {
+      "date": "1953/05",
+      "event": "HB",
+      "heyaName": "Minatogawa",
+      "ichimon": "Nishonoseki",
+      "shisho": "Minatogawa-M#1-Tokachiiwa",
+      "relation": [105, "Nishonoseki"]
+    },
+    {
+      "date": "1964/11",
+      "event": "HS"
+    }
+  ]
+},
+{
+  "name": "Matsugane",
+  "id": 127,
+  "active": false,
+  "events": [
+    {
+      "date": "1929/01",
+      "event": "HB",
+      "heyaName": "Matsugane",
+      "ichimon": "None",
+      "shisho": "Matsugane-K-Momijigawa",
+      "relation": [501, "Tomozuna"]
+    },
+    {
+      "date": "1935/05",
+      "event": "HSt"
+    },
+    {
+      "date": "1938/05",
+      "event": "HB",
+      "shisho": "Matsugane-K-Momijigawa",
+      "relation": [105, "Nishonoseki"]
+    },
+    {
+      "date": "1950/01",
+      "event": "HS",
+      "relation": [105, "Nishonoseki"]
+    }
+  ]
+},
+{
+  "name": "Nakamura",
+  "id": 128,
+  "active": false,
+  "events": [
+    {
+      "date": "1925/06",
+      "event": "HT",
+      "heyaName": "Nakamura",
+      "ichimon": "Osaka Sumo",
+      "shisho": "Nishiiwa-OS J#9-Ashinoura"
+    },
+    {
+      "date": "1927/01",
+      "event": "CI",
+      "ichimon": "None"
+    },
+    {
+      "date": "1938",
+      "event": "CI",
+      "ichimon": "Nishonoseki"
+    },
+    {
+      "date": "1943/01",
+      "event": "HT",
+      "shisho": "Retired-M#1-Tatekabuto"
+    },
+    {
+      "date": "1961/09",
+      "event": "HS",
+      "relation": [105, "Nishonoseki"]
+    }
+  ]
+},
+]
