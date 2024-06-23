@@ -4,25 +4,18 @@
 	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#FFFFFF;}
-	.st1{opacity:0.25;}
 </style>
 <g>
 	<path class="st0" d="M100,500h300"/>
 	<path class="st0" d="M400,500L250.1,350L100,500"/>
 </g>
 <g>
-	<path class="st0" d="M500,400V100"/>
-	<path class="st0" d="M500,100L350,249.9L500,400"/>
-</g>
-<g>
-	<path class="st0" d="M0,100l0,300"/>
+	<path class="st0" d="M0,100v300"/>
 	<path class="st0" d="M0,400l150-149.9L0,100"/>
 </g>
 <g>
-	<polygon class="st0" points="100,0 205,105 205,0 	"/>
-	<polygon class="st0" points="295,0 295,105 400,0 	"/>
-	<g class="st1">
-		<polygon class="st0" points="205,0 205,105 249.9,150 295,105 295,0 		"/>
-	</g>
+	<path class="st0" d="M500,400V100"/>
+	<path class="st0" d="M500,100L350,249.9L500,400"/>
 </g>
+<polygon class="st0" points="100,0 249.9,150 400,0 295,0 295,90 205,90 205,0 "/>
 </svg>

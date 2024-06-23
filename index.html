@@ -9,10 +9,8 @@
 </head>
 <body>
 	<div id="heyaTimeline">
-	  	<div class="timeline-events">
-	  	</div>
+	  	<div class="timeline-events"></div>
 	</div>
-	<button id="addbutton" type="button">click</button>
 	<script
 		src="https://code.jquery.com/jquery-3.7.1.js"
 		integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
@@ -29,15 +27,14 @@
 			// Active yokozuna Tochinishiki took over Kasugano-beya due to death of the shisho.
 			window.timelineOptions = {
 				type: "point",
-				startDatetime: "1830-1-1",
+				startDatetime: "1860-1-1",
 				endDatetime: "2023-12-31",
 				scale: "year",
-				rows: 100,
+				rows: 76,
 				minGridSize: 20,
 				rowHeight: 35,
-				//rangeAlign: "center",
+				rangeAlign: "right",
 				loadingMessage: "Loading...",
-				height: 600,
 				headline: {
 					range: true
 				},
@@ -67,11 +64,11 @@
 			const response = await fetch("heya_data/all_heya.json");
 			const heya = await response.json();
 			const ichimonColor = {
-				Dewanoumi: "#ffb3b3",	//pink
-				Takasago: "#f2d291",	//sand-orange
-				Tokitsukaze: "#b8e65c",	//lime-green
+				Dewanoumi: "#f2aaaa",	//pink
+				Takasago: "#d8bd82",	//sand-orange
+				Tokitsukaze: "#a3ce52",	//lime-green
 				Isegahama: "#66ccb3",	//cyan
-				Nishonoseki: "#daaaf2",	//purple
+				Nishonoseki: "#d399f0",	//purple
 				Takanohana: "#4d88ff"	//blue
 			};
 			const grayHex = "#8c8c8c";
@@ -114,6 +111,8 @@
 					eventObj.bgColor = color;
 					eventObj.bdColor = color;
 					eventObj.relation.linecolor = color;
+					eventObj.relation.linestyle = "normal";
+					eventObj.relation.linesize = 3;
 					if (heya[i].events[j].hasOwnProperty("heyaName")) nameTags.push('h');
 					if (heya[i].events[j].hasOwnProperty("shisho")) nameTags.push('s');
 					if (nameTags.length > 0)
@@ -149,7 +148,9 @@
 										row: parentHeya.row,
 										relation: {
 											after: eventId,
-											linecolor: color
+											linecolor: color,
+											linestyle: "normal",
+											linesize: 3
 										},
 										extend: {
 											invis: ""
@@ -175,7 +176,9 @@
 											row: mergingHeya.row,
 											relation: {
 												after: eventId,
-												linecolor: color + "4d"	//"80" = 50%, "a6" = 65%, "bf" = 75%
+												linecolor: color,	//"80" = 50%, "ab" = 67%, "bf" = 75%,
+												linestyle: "dotted",
+												linesize: 2
 											},
 											extend: {
 												invis: ""
@@ -272,13 +275,10 @@
 					});
 				}
 
-				function addTags() {
+				function addTags(callback) {
 					var nodesWithTag = $($("[data-tags]").not('[data-tags="end-s"]').get().reverse());
 					var hTagNodes = $($('[data-tags^="h"]').get().reverse());
 					var sTagNodes = $($('[data-tags$="s"]').get().reverse());
-					var nextHWidth, nextSWidth;
-					var nextHId = "", nextSTop = "";
-					var hTagWidths = {};
 
 					$("<div>", {
 						id: "shisho-tags"
@@ -295,7 +295,6 @@
 							(parseFloat($(this).css("height")) / 2)) - 15;
 						var initialLeft = Math.round(parseFloat($(this).css("left"))) + 16;
 						var tags = [];
-						var hWidth;
 						
 						if ($(this).attr("data-tags").startsWith('h')) tags.push('h');
 						if ($(this).attr("data-tags").endsWith('s')) tags.push('s');
@@ -314,20 +313,11 @@
 								var hsNode = $("#evt-" + (heyaObj.id * 100 + heyaObj.events.length - 1));
 								tagRange = Math.round(parseFloat(hsNode.css("left")) - parseFloat(initialLeft));
 							}
-							//if (letter == 'h' && $(this).attr("id").slice(0, -2) == nextHId.slice(0, -2))
 							tagRange += 13;
 							if (letter == 'h')
 								initialTop -= 12;
 							else if (tags[0] == 'h')
 								initialTop += 12;
-							//else if (letter == 's' && nextSTop == $(this).css("top"))
-							//	tagRange += nextSWidth + 15;
-							/*
-							if (typeof hWidth != "undefined") {
-								initialLeft += hWidth + 3;
-								tagRange -= hWidth + 3;
-							}
-							*/
 							tagRange += "px";
 
 							tagContainer.css({
@@ -341,7 +331,7 @@
 								if ($(".topTag").length > 0) {
 									if ($(this).hasClass("topTag")) {
 										$(".active").removeClass("active");
-										$(this).removeClass("topTag");
+										$(".topTag").removeClass("topTag");
 										return false;
 									}
 									else {
@@ -371,6 +361,7 @@
 									highestRank = shisho.rank.split('/')[0] + ' ';
 								else if (shisho.rank != "Unknown")
 									highestRank = shisho.rank.split('/').at(-1) + ' ';
+								if (shisho.rank.includes(',')) highestRank = shisho.rank.split(',')[0] + ' ';
 								if (highestRank.startsWith("OS")) highestRank = "OS ";
 
 								if (shisho.shikona.split('/').at(-1).length == 0)
@@ -379,60 +370,25 @@
 									shikona = shisho.shikona.split('/').at(-1);
 								tagEl.text(highestRank.replace('#', "") + shikona);
 								tagContainer.html(tagEl).prependTo("#shisho-tags");
-								//nextSWidth = Math.round(parseFloat(tagEl.css("width")));
-								//nextSTop = $(this).css("top");
 							}
 							else {
 								tagEl.text(event.heyaName);
 								tagContainer.html(tagEl).prependTo("#heya-tags");
-								nextHWidth = Math.round(parseFloat(tagEl.css("width")));
-								nextHId = $(this).attr("id");
-								hWidth = Math.round(parseFloat(tagEl.css("width")));
-								if (!hTagWidths.hasOwnProperty("e-" + evtId.slice(4, -2)) || 
-									hWidth > hTagWidths["e-" + evtId.slice(4, -2)]
-									)
-									hTagWidths["e-" + evtId.slice(4, -2)] = hWidth;
+							}
+							if (tagContainer.next().length != 0 && tagEl.attr("class").slice(0, -2) == tagContainer.next().children(0).attr("class").slice(0, -2)) {
+								var nextTagLeft = Math.round(parseFloat(tagContainer.next().css("left")));
+								var thisTagLeft = Math.round(parseFloat(tagContainer.css("left")));
+								var thisTagWidth = parseInt(tagEl.css("width"));
+								
+								if (nextTagLeft < thisTagLeft + thisTagWidth + 3) {
+									var overlapSize = thisTagLeft + thisTagWidth - nextTagLeft + 3;
+
+									tagContainer.next().css("left", "+=" + overlapSize);
+									tagContainer.next().css("width", "-=" + overlapSize);
+								}
 							}
 						}
 					});
-
-					var allTags = $("")
-					
-					eventNodes.each(function(index) {
-						if (index == eventNodes.length - 1) {
-							setTimeout(callback, 400);
-							return;
-						}
-						
-						var nextNode = eventNodes.eq(index + 1);
-
-						if ($(this).attr("id").slice(0, -2) != nextNode.attr("id").slice(0, -2))
-							return;
-
-						var nextNodeLeft = Math.round(parseFloat(nextNode.css("left")));
-						var thisNodeLeft = Math.round(parseFloat($(this).css("left")));
-						var thisNodeWidth = parseInt($(this).css("width"));
-						
-						if (nextNodeLeft < thisNodeLeft + thisNodeWidth) {
-							var overlapSize = thisNodeLeft + thisNodeWidth - nextNodeLeft;
-							var thisNodeHasLine = typeof $(this).attr("data-hasline") != "undefined";
-							var nextNodeHasLine = typeof nextNode.attr("data-hasline") != "undefined";
-
-							if ((thisNodeHasLine && nextNodeHasLine) || (!thisNodeHasLine && !nextNodeHasLine)) {
-								$(this).css("left", "-=" + (overlapSize / 2));
-								nextNode.css("left", "+=" + (overlapSize / 2));
-							}
-							else if (thisNodeHasLine)
-								nextNode.css("left", "+=" + overlapSize);
-							else
-								$(this).css("left", "-=" + overlapSize);
-						}
-					});
-					/*
-					$('#shisho-tags span').each(function() {
-						$(this).css("left", hTagWidths[this.className.slice(0, -2)] + 5);
-					});
-					*/
 				}
 			});
 			$("#heyaTimeline").Timeline("openEvent", (event) => {
@@ -451,6 +407,9 @@
 		});
 	</script>
 	<style>
+		html {
+			overflow-x: hidden;
+		}
 		body {
 			font-family: Helvetica, Arial, sans-serif;
 			overflow-y: hidden;
@@ -459,7 +418,10 @@
 			z-index: 7 !important;
 			color: #dc3545;
 			cursor: default;
-			background: white;
+		}
+		.jqtl-container {
+			overflow-y: auto;
+			height: 75vh !important;
 		}
 		.jqtl-main {
 			height: fit-content;
@@ -479,6 +441,9 @@
 			line-height: 13px;
 			background: palegreen;
 		}
+		.jqtl-ruler-line-item:first-child > span {
+			transform: unset;
+		}
 		.jqtl-ruler-line-rows {
 			user-select: none;
 			-webkit-user-select: none;
@@ -491,9 +456,6 @@
 		}
 		.jqtl-ruler-bg-top, .jqtl-ruler-bg-bottom {
 			display: none;
-		}
-		.jqtl-container {
-			overflow-y: auto;
 		}
 		.jqtl-ruler-top {
 			top: 0;
