@@ -4,11 +4,11 @@ Heya not included due to lack of data:
     Kabutoyama (Ms27 Okabuto)
     Chiganoura (M4 Oizumi)
     Kise (gyoji Kimura Sehei)
-    ... and many old heya
+    Magaki (K Amagasaki)
+    ... and many others
 
 Event abbreviations in the heya data
     HB - heya branchout
-    DB - 'dojo' branchout (only Yoshibayama and Futabayama to date)
     HF - heya established (no branchout info)
     HE - heya existed
     JA - heya joined from Osaka Sumo Association
@@ -17,5 +17,5 @@ Event abbreviations in the heya data
     CK - changed kabu (heya gets new name)
     HI - heya inherited (heya gets new name and shisho)
     CI - changed ichimon
-    HBa - heya re-established after temporary shutdown
+    HBa - heya established again after temporary shutdown
     HU - heya existence unknown from then
