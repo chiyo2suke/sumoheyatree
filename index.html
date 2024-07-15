@@ -574,6 +574,7 @@
 									if (["CK", "HI"].includes(event))
 										clauses[clauses.length - 1] += ", thus changing the name of the heya to " + kabu + "‑beya";
 									else if (event == "HS" && thisEventDetails.hasOwnProperty("relation")) {
+										clauses[clauses.length - 1] += ',';
 										clauses.push("its rikishi");
 										if (thisEventDetails.relation.length > 1) {
 											clauses[clauses.length - 1] += (" split and moved to ");
@@ -592,7 +593,7 @@
 									}
 
 									if (clauses.length > 1)
-										popoverBody += clauses.slice(0, -1).join(", ") + ", and " + clauses.at(-1);
+										popoverBody += clauses.slice(0, -1).join(", ") + " and " + clauses.at(-1);
 									else
 										popoverBody += clauses[0];
 									popoverBody += '.';
