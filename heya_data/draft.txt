@@ -50,3 +50,5 @@ Isegahama
 
 Nishonoseki
 	7 branchouts + 17 sub-branchouts
+
+Kirishima,Mitakeumi,Shodai,Asanoyama,Takakeisho,Tochinoshin,Takayasu,Goeido,Kotoshogiku,Baruto,Kotomitsuki,Kotooshu,Tochiazuma,Kaio,Miyabiyama,Musoyama,Dejima,Chiyotaikai,Takanonami,Kirishima,Konishiki,Hokutenyu,Asashio,Wakashimazu,Kotokaze,Masuiyama,Asahikuni,Kaiketsu,Daiju,Takanohana,Daikirin,Maenoyama,Kiyokuni,Yutakayama,Tochihikari,Kitabayama,Wakahaguro,Kotogahama

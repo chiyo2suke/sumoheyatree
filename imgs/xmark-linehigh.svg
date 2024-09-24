@@ -6,16 +6,16 @@
 	.st0{fill:#FFFFFF;}
 </style>
 <g>
-	<path class="st0" d="M100,500h300"/>
-	<path class="st0" d="M400,500L250.1,350L100,500"/>
+	<path class="st0" d="M0,92.2v315.6"/>
+	<path class="st0" d="M0,407.8l157.8-157.7L0,92.2"/>
 </g>
 <g>
-	<path class="st0" d="M0,100v300"/>
-	<path class="st0" d="M0,400l150-149.9L0,100"/>
+	<path class="st0" d="M500,407.8V92.2"/>
+	<path class="st0" d="M500,92.2L342.2,249.9L500,407.8"/>
 </g>
 <g>
-	<path class="st0" d="M500,400V100"/>
-	<path class="st0" d="M500,100L350,249.9L500,400"/>
+	<path class="st0" d="M92.2,500h315.6"/>
+	<path class="st0" d="M407.8,500L250.1,342.2L92.2,500"/>
 </g>
-<polygon class="st0" points="100,0 249.9,150 400,0 295,0 295,90 205,90 205,0 "/>
+<polygon class="st0" points="92.2,0 249.9,157.8 407.8,0 295,0 295,90 205,90 205,0 "/>
 </svg>
