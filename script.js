@@ -63,10 +63,6 @@ $(document).ready(async function() {
     dbHeyaId = {
         Ajigawa: 1, Araiso: 2, Arashio: 3, Asahiyama: 4, Asakayama: 5, Azumazeki: 6, Chiganoura: 7, Dekiyama: 8, Dewanoumi: 9, Edagawa: 10, Fujigane: 11, Fujishima: 12, Furiwake: 13, Futabayama: 109, Futagoyama: 14, Hakkaku: 15, Hanakago: 17, Hanaregoma: 18, Hatachiyama: 19, Hidenoyama: 20, Ikazuchi: 21, Irumagawa: 23, Isegahama: 24, Isenoumi: 25, Izutsu: 27, Jinmaku: 28, Kabutoyama: 29, Kagamiyama: 30, Kashiwado: 130, Kasugano: 31, Kasugayama: 32, Kataonami: 33, Kimigahama: 35, Kiriyama: 36, Kise: 37, Kitanoumi: 107, Kokonoe: 40, Kumagatani: 41, Kumegawa: 42, Magaki: 43, Matsuchiyama: 44, Matsugane: 45, Michinoku: 46, Mihogaseki: 47, Minato: 48, Minatogawa: 49, Minezaki: 50, Miyagino: 51, Musashigawa: 52, Nakadachi: 53, Nakagawa: 54, Nakamura: 55, Naruto: 56, Nishiiwa: 57, Nishikido: 58, Nishikijima: 59, Nishonoseki: 60, Oguruma: 61, Oitekaze: 62, Onaruto: 63, Onoe: 64, Onogawa: 65, Onomatsu: 66, Oshima: 67, Oshiogawa: 68, Otake: 69, Otowayama: 70, Oyama: 71, Sadogatake: 72, Sakaigawa: 73, Sanoyama: 74, Shibatayama: 77, Shikihide: 78, Shikoroyama: 79, Shiratama: 81, Tagonoura: 82, Taiho: 106, Takadagawa: 83, Takanohana: 108, Takasago: 84, Takashima: 86, Takekuma: 87, Tamagaki: 89, Tamanoi: 90, Tanigawa: 91, Tatekawa: 92, Tateyama: 93, Tatsunami: 94, Tatsutagawa: 95, Tatsutayama: 96, Tokitsukaze: 97, Tokiwayama: 98, Tomozuna: 99, Urakaze: 100, Wakafuji: 101, Wakamatsu: 102, Yamahibiki: 103, Yamashina: 104, Yamawake: 105, Yoshibayama: 11
     },
-    shikonaInUrl = [
-        { "3649": "Kiyomigata" },
-        { "3574": "Irumagawa" },
-    ],
     picException = [
         5949,
         4624,
@@ -731,17 +727,6 @@ $(document).ready(async function() {
                 var shishoStatus = null;
                 var shishoPicUrl = null;
                 var shishoShikona = null;
-                const shishoLocalPic = [
-                    "Inagawa",
-                    "Asashio I",
-                    "Ichinishiki",
-                    "Dairyu",
-                    "Kanechika",
-                    "Ozutsu",
-                    "Araiwa",
-                    "Umegatani I",
-                    "Onigatani"
-                ];
 
                 for (var i = eventIndex; i >= 0; i--) {
                     if (heyaEvents[i].hasOwnProperty("heyaName")) {
@@ -755,13 +740,10 @@ $(document).ready(async function() {
                     var ranks = shishoDetails[1];
                     var shikona = shishoDetails[2];
                     var sumoDbLink = (typeof shishoDetails[3] != "undefined") ? 
-                    "http://sumodb.sumogames.de/Rikishi.aspx?r=" + shishoDetails[3] : 
+                    "https://sumodb.sumogames.de/Rikishi.aspx?r=" + shishoDetails[3] : 
                     null;
 
-                    if (shishoLocalPic.includes(shikona))
-                        shishoPicUrl = "./imgs/";
-                    else
-                        shishoPicUrl = "http://heyaaz.nagioff.com/image/Kesho/";
+                    shishoPicUrl = "./imgs/rikishi/";
                     shishoStatus = shishoDetails[0];
                     switch (shishoStatus) {
                         case "Retired":
@@ -816,9 +798,8 @@ $(document).ready(async function() {
                             }
                             else if (typeof ranks[2] != "undefined" && ranks[0].length > 0) {
                                 shishoInfo += " (former " + ranks[0];
-                                if (typeof shikona[2] != "undefined") {
+                                if (typeof shikona[2] != "undefined")
                                     shishoInfo += ' ' + shikona[0];
-                                }
                                 shishoPicUrl += shikona[0].split(' ')[0];
                                 shishoInfo += ')';
                             }
@@ -955,12 +936,17 @@ $(document).ready(async function() {
 
                     shishoPic.attr("class", "shishoPic");
                     image.attr("src", shishoPicUrl);
+                    image.attr("class", "shishoImg");
                     caption.text(shishoShikona);
                     shishoPic.append(image);
                     shishoPic.append(caption);
                     $('#' + popId).append(shishoPic);
-                    $(".shishoPic img").onload = function() {
+                    if (document.querySelector(".shishoImg").complete)
                         $('#' + popId).popover("update");
+                    else {
+                        document.querySelector(".shishoImg").addEventListener("load", function() {
+                            $('#' + popId).popover("update");
+                        });
                     }
                     $('#' + popId).addClass("withPic");
                 }
