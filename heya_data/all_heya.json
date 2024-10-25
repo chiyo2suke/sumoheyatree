@@ -1882,12 +1882,13 @@
         "date": "1927/01",
         "event": "JA",
         "heyaName": "Asahiyama",
-        "ichimon": "Isegahama",
+        "ichimon": "None",
         "shisho": "Asahiyama-OS O-Asahiyama"
       },
       {
         "date": "1944/01",
-        "event": "HT",
+        "event": "HT/CI",
+        "ichimon": "Isegahama",
         "shisho": "Active-S-Futasegawa-3825",
         "reason": "decease"
       },
@@ -4134,6 +4135,7 @@
     "name": "Musashigawa",
     "id": 514,
     "active": false,
+    "row": 34,
     "events": [
       {
         "date": "1910/01",
@@ -4676,7 +4678,7 @@
       {
         "date": "1941/11/13",
         "event": "HT",
-        "shisho": "Active-M#3/M#13/-Fujigatake/Wakaminato/-3810",
+        "shisho": "Active-M#3/M#13/-Wakaminato-3810",
         "reason": "decease"
       },
       {
@@ -5111,6 +5113,7 @@
     "name": "Irumagawa",
     "id": 552,
     "active": false,
+    "row": 10,
     "events": [
       {
         "date": "1910/01",

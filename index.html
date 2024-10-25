@@ -9,13 +9,53 @@
 	<link rel="stylesheet" type="text/css" href="styles.css"/>
 </head>
 <body>
-	<h1>Timeline of sumo heya</h1>
-	<div id="heyaTimeline">
-	  	<div class="timeline-events"></div>
+	<h1>Heya charts</h1>
+	<div id="timelineLegend">
+		<h4><b>Heya legend</b></h4>
+		<div>
+			<div><div class="legendSymbol"></div> - opening</div>
+			<div><div class="legendSymbol" style="border-radius: 50%;"></div> - take over</div>
+			<div><div class="legendSymbol" style="background-image: url(&quot;imgs/xmark.svg&quot;);"></div> - closing</div>
+			<div><div class="legendSymbol" style="border-radius: 50%;background-image: url(&quot;imgs/arrow.svg&quot;);"></div> - name change</div>
+			<div><div class="legendSymbol" style="border-radius: 50%;background-image: url(&quot;imgs/cirrow.svg&quot;);"></div> - take over and name change</div>
+			<div><div class="legendSymbol" style="background-image: url(&quot;imgs/squareframe.svg&quot;);"></div> - joining the JSA from Osaka-sumo</div>
+			<div style="font-size: 14px; line-height: 14px; margin-top: 10px;">
+				<b>Nishonoseki</b> - name of heya
+				<br>
+				Y Tamanishiki - career highest rank and shikona of shisho
+			</div>
+		</div>
+		<div>
+			<b>Ichimon colors</b>
+			<br>
+			<span style="color: #f2aaaa;">▰</span> Dewanoumi
+			<br>
+			<span style="color: #d8bd82;">▰</span> Takasago
+			<br>
+			<span style="color: #a3ce52;">▰</span> Nishonoseki
+			<br>
+			<span style="color: #66ccb3;">▰</span> Isegahama <span id="iseInfo" tabindex="0" data-toggle="popover">ⓘ</span>
+			<br>
+			<span style="color: #d399f0;">▰</span> Tokitsukaze
+			<br>
+			<span style="color: #44ab4d;">▰</span> Takanohana
+			<br>
+			<span style="color: #8c8c8c;">▰</span> None
+		</div>
 	</div>
+	<button type="button" id="saveChart">Save chart as PNG</button>
+	<div id="zoomSection">
+		<span id="timelineSize" data-gridSize="20">Zoom</span>
+		<button autocomplete="off" type="button" class="zoomButton">+</button>
+		<button autocomplete="off" type="button" class="zoomButton">-</button>
+	</div>
+	<div id="heyaTimeline">
+		<div class="timeline-events"></div>
+	</div>
+	<hr>
 	<div id="graphSection">
 		<label><input id="averageCheck" type="checkbox" autocomplete="off"> Average each year </label>
-		<button id="hideAll">Hide all graphs</button>
+		<button type="button" id="hideAll">Hide all graphs</button>
 		<div id="graphContainer"></div>
 		<ul id="legends">
 		</ul>

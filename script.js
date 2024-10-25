@@ -5,10 +5,11 @@ $(document).ready(async function() {
         endDatetime: "2023",
         scale: "year",
         rows: 74,
-        minGridSize: 17.5,
+        minGridSize: parseInt($("#timelineSize").attr("data-gridSize")),
         rowHeight: 35,
-        rangeAlign: "right",
         loadingMessage: "Loading...",
+        engine: "d3.js",
+        reloadCacheKeep: false,
         headline: {
             display: false
         },
@@ -16,7 +17,7 @@ $(document).ready(async function() {
             top: {
                 lines: ["year"],
                 color: "transparent",
-                fontSize: 13,
+                fontSize: 16,
                 format: {
                     year: "number"
                 }
@@ -24,7 +25,7 @@ $(document).ready(async function() {
             bottom: {
                 lines: ["year"],
                 color: "transparent",
-                fontSize: 13,
+                fontSize: 16,
                 format: {
                     year: "number"
                 }
@@ -36,7 +37,7 @@ $(document).ready(async function() {
         },
         colorScheme: {
             theme: {
-                gridbase: "gainsboro"
+                gridbase: "#ededed"
             }
         }
     }
@@ -62,18 +63,7 @@ $(document).ready(async function() {
     },
     dbHeyaId = {
         Ajigawa: 1, Araiso: 2, Arashio: 3, Asahiyama: 4, Asakayama: 5, Azumazeki: 6, Chiganoura: 7, Dekiyama: 8, Dewanoumi: 9, Edagawa: 10, Fujigane: 11, Fujishima: 12, Furiwake: 13, Futabayama: 109, Futagoyama: 14, Hakkaku: 15, Hanakago: 17, Hanaregoma: 18, Hatachiyama: 19, Hidenoyama: 20, Ikazuchi: 21, Irumagawa: 23, Isegahama: 24, Isenoumi: 25, Izutsu: 27, Jinmaku: 28, Kabutoyama: 29, Kagamiyama: 30, Kashiwado: 130, Kasugano: 31, Kasugayama: 32, Kataonami: 33, Kimigahama: 35, Kiriyama: 36, Kise: 37, Kitanoumi: 107, Kokonoe: 40, Kumagatani: 41, Kumegawa: 42, Magaki: 43, Matsuchiyama: 44, Matsugane: 45, Michinoku: 46, Mihogaseki: 47, Minato: 48, Minatogawa: 49, Minezaki: 50, Miyagino: 51, Musashigawa: 52, Nakadachi: 53, Nakagawa: 54, Nakamura: 55, Naruto: 56, Nishiiwa: 57, Nishikido: 58, Nishikijima: 59, Nishonoseki: 60, Oguruma: 61, Oitekaze: 62, Onaruto: 63, Onoe: 64, Onogawa: 65, Onomatsu: 66, Oshima: 67, Oshiogawa: 68, Otake: 69, Otowayama: 70, Oyama: 71, Sadogatake: 72, Sakaigawa: 73, Sanoyama: 74, Shibatayama: 77, Shikihide: 78, Shikoroyama: 79, Shiratama: 81, Tagonoura: 82, Taiho: 106, Takadagawa: 83, Takanohana: 108, Takasago: 84, Takashima: 86, Takekuma: 87, Tamagaki: 89, Tamanoi: 90, Tanigawa: 91, Tatekawa: 92, Tateyama: 93, Tatsunami: 94, Tatsutagawa: 95, Tatsutayama: 96, Tokitsukaze: 97, Tokiwayama: 98, Tomozuna: 99, Urakaze: 100, Wakafuji: 101, Wakamatsu: 102, Yamahibiki: 103, Yamashina: 104, Yamawake: 105, Yoshibayama: 11
-    },
-    picException = [
-        5949,
-        4624,
-        3465,
-        3516,
-        4932,
-        3522,
-        3526,
-        3490,
-        3504,
-    ];
+    };
     const response1 = await fetch("heya_data/all_heya.json");
     var heya = await response1.json();
     const response2 = await fetch("heya_data/heya_data.csv");
@@ -83,6 +73,12 @@ $(document).ready(async function() {
         $(".timeline-events").first().append('<div data-timeline-node="' + JSON.stringify(eventObject).replace(/"/g, "'") + '"></div>');
     }
 
+    $("#iseInfo").popover({
+        trigger: "focus",
+        html: true,
+        content: "1960s-2007: Tatsunami-Isegahama union<br>2007-2012: Tatsunami-ichimon<br>2012-present: Isegahama-ichimon",
+        template: '<div class="popover iseInfo" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>'
+    });
     heya = _.chain(heya)
         .sortBy(function(h) {
             return h.events[0].date;
@@ -227,268 +223,325 @@ $(document).ready(async function() {
     }
     $("#heyaTimeline").Timeline(window.timelineOptions);
 
-    $("#heyaTimeline").Timeline("initialized", () => {
-        const chart = Highcharts.chart("graphContainer", {
-            chart: {
-                type: "line",
-                zooming: {
-                    type: 'x',
-                    mouseWheel: false
-                },
-                panning: {
-                    enabled: true
-                }
+    const chart = Highcharts.chart("graphContainer", {
+        chart: {
+            type: "line",
+            zoomType: 'x',
+            zooming: {
+                type: 'x',
+                mouseWheel: false
             },
-            plotOptions: {
-                series: {
-                    dataLabels: {
-                        enabled: true,
-                        align: "left",
-                        format: "<b>{point.newName}</b><br>{point.shisho}",
-                        style: {
-                            fontWeight: "normal"
-                        }
-                    },
-                    cursor: "pointer",
-                    point: {
-                        events: {
-                            click: function() {
-                                if (chart.options.chart.type == "spline") return;
-                                var d = new Date(this.x),
-                                    url = "https://sumodb.sumogames.de/Banzuke.aspx?b=";
-
-                                url += d.getFullYear();
-                                if (d.getMonth() + 1 < 10) url += '0';
-                                url += (d.getMonth() + 1) + "&heya=" + dbHeyaId[this.heyaName];
-                                window.open(url, "_blank").focus();
-                            }
-                        }
-                    },
-                    dataGrouping: {
-                        enabled: false,
-                        approximation: "average",
-                        forced: true,
-                        anchor: "middle",
-                        units: [
-                            ["year", [2]]
-                        ]
-                    },
-                    marker: {
-                        enabled: false,
-                        lineColor: "white",
-                        lineWidth: 1,
-                        symbol: "circle",
-                        radius: 5
-                    },
-                    label: {
-                        enabled: true,
-                        format: "{options.custom.heyaLabel}"
+            panning: {
+                enabled: true,
+                pinchType: 'x'
+            }
+        },
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    align: "left",
+                    format: "<b>{point.newName}</b><br>{point.shisho}",
+                    style: {
+                        fontWeight: "normal",
+                        color: null,
+                        textOutline: "white"
                     }
                 },
-            },
-            colors: [
-                "#32937c", "#d648a2", "#54cd5f", "#a562dc", "#88d24c", "#4071f3", "#b1c639", "#786de5", "#d9bf3c", "#4372de", "#eaa733", "#658df0", "#4a992f", "#d96dd7", "#4bdb8c", "#dc4271", "#67d499", "#dd4847", "#57d6cd", "#e3572f", "#4fc2e4", "#e57e26", "#4a71ca", "#96ca67", "#8670cf", "#738f2e", "#9f5aaf", "#389b5b", "#bb87da", "#9d8b26", "#6c78c2", "#c58a2d", "#4a92ce", "#c56432", "#a8aaeb", "#c2c66d", "#7b77b1", "#ec975c", "#71caa5", "#e67d9f", "#5d884e", "#e59ed8", "#9ec485", "#ae6090", "#e0b975", "#c26060", "#8d8443", "#e99380", "#a56f2c", "#ad744e"
-            ],
-            xAxis: {
-                ordinal: false,
-                type: "datetime"
-            },
-            yAxis: {
-                min: 0,
-                allowDecimals: false
-            },
-            legend: {
-                enabled: false
-            },
-            title: {
-                text: "Number of rikishi in heya"
-            },
-            subtitle: {
-                text: "Source: Sumo Reference"
-            },
-            tooltip: {
-                shared: true,
-                split: false,
-                headerFormat: '<span style="font-size: 10px">{point.key}</span>',
-                pointFormat: '<br><span style="color: {series.color}">●</span> {point.heyaName}: <b>{point.y}</b>'
-            },
-            series: []
-        });
-
-        setData();
-        
-        function setData() {
-            const start = 2, active = 44;
-            var csvLines = csv.split(/[\r?\n|\r|\n]+/);
-            var names = csvLines[0].split(',');
-
-            names = names.slice(start);
-            for (var i = 0; i < names.length; i++) {
-                chart.addSeries({
-                    name: names[i].split('-')[0],
-                    data: []
-                });
-                chart.series[i].hide();
-                if (i == active) {
-                    $("<div>", {
-                        class: "divider"
-                    }).appendTo("#legends");
-                }
-                $("<li>", {
-                    html: "<a>" + names[i].split('-')[0] + "</a>",
-                    class: names[i] + " lineThru",
-                    css: {
-                        color: chart.series[i].color
-                    },
-                    mouseenter: function() {
-                        if (this.classList.contains("lineThru")) return;
-
-                        var seriesInd = $("#legends > li").index(this);
-
-                        chart.series[seriesInd].setState("hover");
-                        for (var i = 0; i < chart.series.length; i++) {
-                            if (chart.series[i].visible && i != seriesInd)
-                                chart.series[i].setState("inactive");
-                        }
-                    },
-                    mouseleave: function() {
-                        if (this.classList.contains("lineThru")) return;
-
-                        for (var i = 0; i < chart.series.length; i++)
-                            chart.series[i].setState("normal");
-                    },
-                    click: function() {
-                        var seriesInd = $("#legends > li").index(this);
-                        var theSeries = chart.series[seriesInd];
-
-                        chart.showLoading("Please wait...");
-                        this.classList.toggle("lineThru");
-                        setTimeout(function() {
-                            if (theSeries.options.data.length == 0) {
-                                for (var i = 1; i < csvLines.length; i++) {
-                                    var rowData, cellData, dateStr, dateObj, attrib, point = {};
-                    
-                                    if (csvLines[i].length == 0) continue;
-                                    rowData = csvLines[i].split(',');
-                                    cellData = rowData[seriesInd + start];
-                                    if (cellData.length == 0) continue;
-                                    dateStr = rowData[0].split('-');
-                                    dateObj = Date.UTC(parseInt(dateStr[0]), parseInt(dateStr[1]) - 1);
-                                    if (cellData == 'n') {
-                                        point = {
-                                            x: dateObj,
-                                            y: null
-                                        }
-                                        theSeries.addPoint(point, false);
-                                        continue;
-                                    }
-                                    attrib = cellData.split('-');
-                                    point.x = dateObj;
-                                    point.y = parseInt(attrib[0]);
-                                    if (attrib.length > 2 && dateStr.join('-') != "1935-01") {
-                                        point.marker = { enabled: true };
-                                        if (attrib.length > 3)
-                                            point.marker.symbol = "square";
-                                        else if (attrib.at(-1).includes(' '))
-                                            point.marker.symbol = "circle";
-                                        else
-                                            point.marker.symbol = "triangle";
-                                    }
-                                    if (attrib.at(-1).includes(' '))
-                                        point.shisho = attrib.pop();
-                                    if (attrib.length > 2) {
-                                        if (theSeries.name == attrib.at(-1) && theSeries.options.data.length == 0) {
-                                            theSeries.options.custom = {
-                                                heyaLabel: attrib.at(-1)
-                                            }
-                                        }
-                                        names[seriesInd] = attrib.pop();
-                                        point.newName = names[seriesInd];
-                                    }
-                                    point.heyaName = names[seriesInd];
-                                    theSeries.addPoint(point, false);
-                                }
-                                theSeries.show();
-                            }
-                            else if (!theSeries.visible)
-                                theSeries.show();
-                            else
-                                theSeries.hide();
-    
-                            var visibleCount = 0, overlap;
+                cursor: "pointer",
+                point: {
+                    events: {
+                        click: function() {
+                            if (chart.options.chart.type == "spline") return;
                             
-                            for (var i = 0; i < chart.series.length; i++)
-                                if (chart.series[i].visible) visibleCount++;
-                            if (visibleCount > 1) overlap = false;
-                            else if (visibleCount == 1) overlap = true;
-                            if (typeof overlap != "undefined") {
-                                chart.update({
-                                    plotOptions: {
-                                        line: {
-                                            dataLabels: {
-                                                allowOverlap: overlap
-                                            }
-                                        }
-                                    }
-                                });
-                            }
-                            chart.hideLoading();
-                        }, 200);
+                            var d = new Date(this.x),
+                                url = "https://sumodb.sumogames.de/Banzuke.aspx?b=";
+
+                            url += d.getFullYear();
+                            if (d.getMonth() + 1 < 10) url += '0';
+                            url += (d.getMonth() + 1) + "&heya=" + dbHeyaId[this.heyaName];
+                            window.open(url, "_blank").focus();
+                        }
                     }
+                },
+                dataGrouping: {
+                    enabled: false,
+                    approximation: "average",
+                    forced: true,
+                    anchor: "middle",
+                    units: [
+                        ["year", [2]]
+                    ]
+                },
+                marker: {
+                    enabled: false,
+                    lineColor: "white",
+                    lineWidth: 1,
+                    symbol: "circle",
+                    radius: 5
+                },
+                label: {
+                    enabled: true,
+                    format: "{options.custom.heyaLabel}"
+                }
+            },
+        },
+        colors: [
+            "#32937c", "#d648a2", "#54cd5f", "#a562dc", "#88d24c", "#4071f3", "#b1c639", "#786de5", "#d9bf3c", "#4372de", "#eaa733", "#658df0", "#4a992f", "#d96dd7", "#4bdb8c", "#dc4271", "#67d499", "#dd4847", "#57d6cd", "#e3572f", "#4fc2e4", "#e57e26", "#4a71ca", "#96ca67", "#8670cf", "#738f2e", "#9f5aaf", "#389b5b", "#bb87da", "#9d8b26", "#6c78c2", "#c58a2d", "#4a92ce", "#c56432", "#a8aaeb", "#c2c66d", "#7b77b1", "#ec975c", "#71caa5", "#e67d9f", "#5d884e", "#e59ed8", "#9ec485", "#ae6090", "#e0b975", "#c26060", "#8d8443", "#e99380", "#a56f2c", "#ad744e"
+        ],
+        xAxis: {
+            ordinal: false,
+            type: "datetime"
+        },
+        yAxis: {
+            min: 0,
+            allowDecimals: false
+        },
+        legend: {
+            enabled: false
+        },
+        title: {
+            text: "Number of rikishi in heya"
+        },
+        subtitle: {
+            text: "Source: Sumo Reference"
+        },
+        tooltip: {
+            shared: true,
+            split: false,
+            headerFormat: '<span style="font-size: 10px">{point.key}</span>',
+            pointFormat: '<br><span style="color: {series.color}">●</span> {point.heyaName}: <b>{point.y}</b>'
+        },
+        series: []
+    });
+
+    setData();
+    
+    function setData() {
+        const start = 2, active = 44;
+        var csvLines = csv.split(/[\r?\n|\r|\n]+/);
+        var names = csvLines[0].split(',');
+
+        names = names.slice(start);
+        for (var i = 0; i < names.length; i++) {
+            chart.addSeries({
+                name: names[i].split('-')[0],
+                data: []
+            });
+            chart.series[i].hide();
+            if (i == active) {
+                $("<div>", {
+                    class: "divider"
                 }).appendTo("#legends");
             }
-        }
-        $("#hideAll").on("click", function() {
-            var legendItems = $("#legends > li");
+            $("<li>", {
+                html: "<a>" + names[i].split('-')[0] + "</a>",
+                class: names[i] + " lineThru",
+                css: {
+                    color: chart.series[i].color
+                },
+                mouseenter: function() {
+                    if (this.classList.contains("lineThru")) return;
 
-            chart.showLoading("Please wait...");
-            setTimeout(function() {
-                for (var i = 0; i < legendItems.length; i++) {
-                    if (!legendItems[i].classList.contains("lineThru")) {
-                        chart.series[i].hide();
-                        legendItems[i].classList.add("lineThru");
+                    var seriesInd = $("#legends > li").index(this);
+
+                    chart.series[seriesInd].setState("hover");
+                    for (var i = 0; i < chart.series.length; i++) {
+                        if (chart.series[i].visible && i != seriesInd)
+                            chart.series[i].setState("inactive");
+                    }
+                },
+                mouseleave: function() {
+                    if (this.classList.contains("lineThru")) return;
+
+                    for (var i = 0; i < chart.series.length; i++)
+                        chart.series[i].setState("normal");
+                },
+                click: function() {
+                    var seriesInd = $("#legends > li").index(this);
+                    var theSeries = chart.series[seriesInd];
+
+                    chart.showLoading("Please wait...");
+                    this.classList.toggle("lineThru");
+                    setTimeout(function() {
+                        if (theSeries.options.data.length == 0) {
+                            for (var i = 1; i < csvLines.length; i++) {
+                                var rowData, cellData, dateStr, dateObj, attrib, point = {};
+                
+                                if (csvLines[i].length == 0) continue;
+                                rowData = csvLines[i].split(',');
+                                cellData = rowData[seriesInd + start];
+                                if (cellData.length == 0) continue;
+                                dateStr = rowData[0].split('-');
+                                dateObj = Date.UTC(parseInt(dateStr[0]), parseInt(dateStr[1]) - 1);
+                                if (cellData == 'n') {
+                                    point = {
+                                        x: dateObj,
+                                        y: null
+                                    }
+                                    theSeries.addPoint(point, false);
+                                    continue;
+                                }
+                                attrib = cellData.split('-');
+                                point.x = dateObj;
+                                point.y = parseInt(attrib[0]);
+                                if (attrib.length > 2 && dateStr.join('-') != "1935-01") {
+                                    point.marker = { enabled: true };
+                                    if (attrib.length > 3)
+                                        point.marker.symbol = "square";
+                                    else if (attrib.at(-1).includes(' '))
+                                        point.marker.symbol = "circle";
+                                    else
+                                        point.marker.symbol = "triangle";
+                                }
+                                if (attrib.at(-1).includes(' '))
+                                    point.shisho = attrib.pop();
+                                if (attrib.length > 2) {
+                                    if (theSeries.name == attrib.at(-1) && theSeries.options.data.length == 0) {
+                                        theSeries.options.custom = {
+                                            heyaLabel: attrib.at(-1)
+                                        }
+                                    }
+                                    names[seriesInd] = attrib.pop();
+                                    point.newName = names[seriesInd];
+                                }
+                                point.heyaName = names[seriesInd];
+                                theSeries.addPoint(point, false);
+                            }
+                            theSeries.show();
+                        }
+                        else if (!theSeries.visible)
+                            theSeries.show();
+                        else
+                            theSeries.hide();
+
+                        var visibleCount = 0, overlap;
+                        
+                        for (var i = 0; i < chart.series.length; i++)
+                            if (chart.series[i].visible) visibleCount++;
+                        if (visibleCount > 1) overlap = false;
+                        else if (visibleCount == 1) overlap = true;
+                        if (typeof overlap != "undefined") {
+                            chart.update({
+                                plotOptions: {
+                                    line: {
+                                        dataLabels: {
+                                            allowOverlap: overlap
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                        chart.hideLoading();
+                    }, 200);
+                }
+            }).appendTo("#legends");
+        }
+    }
+    $("#hideAll").on("click", function() {
+        var legendItems = $("#legends > li");
+
+        chart.showLoading("Please wait...");
+        setTimeout(function() {
+            for (var i = 0; i < legendItems.length; i++) {
+                if (!legendItems[i].classList.contains("lineThru")) {
+                    chart.series[i].hide();
+                    legendItems[i].classList.add("lineThru");
+                }
+            }
+            chart.hideLoading();
+        }, 200);
+    });
+    $("#averageCheck").on("click", function() {
+        if (this.checked) {
+            chart.update({
+                chart: {
+                    type: "spline"
+                },
+                tooltip: {
+                    valueDecimals: 1
+                },
+                plotOptions: {
+                    series: {
+                        dataGrouping: {
+                            enabled: true
+                        }
                     }
                 }
-                chart.hideLoading();
-            }, 200);
-        });
-        $("#averageCheck").on("click", function() {
-            if (this.checked) {
-                chart.update({
-                    chart: {
-                        type: "spline"
-                    },
-                    tooltip: {
-                        valueDecimals: 1
-                    },
-                    plotOptions: {
-                        series: {
-                            dataGrouping: {
-                                enabled: true
-                            }
+            });
+        }
+        else {
+            chart.update({
+                chart: {
+                    type: "line"
+                },
+                tooltip: {
+                    valueDecimals: 0
+                },
+                plotOptions: {
+                    series: {
+                        dataGrouping: {
+                            enabled: false
                         }
                     }
-                });
-            }
-            else {
-                chart.update({
-                    chart: {
-                        type: "line"
-                    },
-                    tooltip: {
-                        valueDecimals: 0
-                    },
-                    plotOptions: {
-                        series: {
-                            dataGrouping: {
-                                enabled: false
-                            }
-                        }
-                    }
-                });
-            }
-        });
+                }
+            });
+        }
+    });
 
+    $(".zoomButton").on("click", function() {
+        if ($(this).prop("disabled")) return;
+
+        const min = 15, max = 25;
+        var current = parseInt($("#timelineSize").attr("data-gridSize")),
+            newRowHeight,
+            container = document.querySelector(".jqtl-container"),
+            evtContainer = $("#heyaTimeline"),
+            visibleWidth = container.offsetWidth,
+            visibleHeight = container.offsetHeight,
+            fullWidth = container.scrollLeftMax + visibleWidth,
+            fullHeight = container.scrollTopMax + visibleHeight,
+            posX = container.scrollLeft + (visibleWidth / 2),
+            posY = container.scrollTop + (visibleHeight / 2),
+            centerXPercent = posX * 100 / fullWidth,
+            centerYPercent = posY * 100 / fullHeight;
+
+        if ($(".zoomButton").index(this) == 0) current += 5;
+        else current -= 5;
+        if (current > min && current < max) {
+            $(".zoomButton").eq(0).prop("disabled", false);
+            $(".zoomButton").eq(1).prop("disabled", false);
+            if (evtContainer.hasClass("zoomedOut")) evtContainer.removeClass("zoomedOut");
+            if (evtContainer.hasClass("zoomedIn")) evtContainer.removeClass("zoomedIn");
+            newRowHeight = 35;
+        }
+        else if (current == min) {
+            $(".zoomButton").eq(1).prop("disabled", true);
+            evtContainer.addClass("zoomedOut");
+            newRowHeight = 32.5;
+        }
+        else {
+            $(".zoomButton").eq(0).prop("disabled", true);
+            evtContainer.addClass("zoomedIn");
+            newRowHeight = 40;
+        }
+        $("#heyaTimeline").Timeline("reload", {
+                minGridSize: current,
+                rowHeight: newRowHeight
+            }, () => {
+                $("#timelineSize").attr("data-gridSize", current);
+                container = document.querySelector(".jqtl-container");
+                container.scrollTo(
+                    ((container.scrollLeftMax + visibleWidth) / 100 * centerXPercent) - (visibleWidth / 2),
+                    ((container.scrollTopMax + visibleHeight) / 100 * centerYPercent) - (visibleHeight / 2)
+                );
+                initTimeline();
+            }
+        );
+    });
+    $("#heyaTimeline").Timeline("initialized", initTimeline);
+
+    function initTimeline() {
         var eventNodes = $(".jqtl-event-node").not("[data-invis]");
 
         eventNodes.popover({
@@ -512,6 +565,7 @@ $(document).ready(async function() {
         
         $(".jqtl-container").on("keydown click", function(e) {
             var visiblePopover = $(".popover.show");
+            
             if (visiblePopover.length > 0 && (e.which == 27 || (!e.target.id.startsWith("evt-") && 
                 !document.querySelector(".popover").contains(e.target)))) {
                 visiblePopover.popover("hide");
@@ -834,7 +888,7 @@ $(document).ready(async function() {
                                 else if (shishoStatus == "Active")
                                     clauses.push("assumed the kabu <i>" + kabu + "</i>");
                                 else if ((heyaName != kabu || shishoToshi != null) && shishoToshi != kabu)
-                                    clauses.push("changed his kabu to <i>" + kabu + "</i>");
+                                    clauses.push("changed kabu to <i>" + kabu + "</i>");
                                 shishoInfo += ' ';
                             }
                             else
@@ -929,6 +983,7 @@ $(document).ready(async function() {
                 else $('#' + popId).children(".popover-header").append(document.createTextNode(' ' + heyaName));
                 
                 $('#' + popId).children(".popover-body").html(shishoInfo + popoverBody);
+                
                 if (shishoPicUrl != null && $('#' + popId).children().length < 4) {
                     var shishoPic = $("<figure>");
                     var image = $("<img>");
@@ -949,9 +1004,14 @@ $(document).ready(async function() {
                         });
                     }
                     $('#' + popId).addClass("withPic");
+                    document.querySelector(".shishoImg").addEventListener("error", function() {
+                        this.parentElement.remove();
+                        $('#' + popId).removeClass("withPic");
+                        $('#' + popId).popover("update");
+                    });
                 }
                 $('#' + popId).popover("update");
             }
         });
-    });
+    }
 });
